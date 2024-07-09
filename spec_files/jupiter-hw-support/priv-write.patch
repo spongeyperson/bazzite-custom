@@ -2,25 +2,37 @@ diff --git a/usr/bin/steamos-polkit-helpers/steamos-priv-write b/usr/bin/steamos
 index 8fcd1d4..4b47d21 100755
 --- a/usr/bin/steamos-polkit-helpers/steamos-priv-write
 +++ b/usr/bin/steamos-polkit-helpers/steamos-priv-write
-@@ -3,6 +3,8 @@
- set -euo pipefail
- shopt -s nullglob
+@@ -21,15 +21,11 @@
+ {
+     local path="$1"
+     local pattern="$2"
+-    local IFS=
+-    local candidates=($pattern)
  
-+source /etc/default/steam-hardware-control
-+
- if [[ $EUID -ne 0 ]];
- then
-     exec pkexec --disable-internal-agent "$0" "$@"
-@@ -37,13 +39,14 @@
+-    for candidate in "${candidates[@]}"; do
+-        if [[ "$path" == "$candidate" ]]; then
+-            true
+-            return
+-        fi
+-    done
++    if [[ "$1" == $2 ]]; then
++       true;
++       return;
++    fi
+ 
+     false;
+     return;
+@@ -37,13 +33,14 @@
  
  function CommitWrite()
  {
 +    chmod a+w "$WRITE_PATH"
-+    echo "chmod a+w: $WRITE_PATH" | systemd-cat -t p-steamos-priv-write -p warning
++    Log "chmod a+w: $WRITE_PATH"
 +
      if [ -n "$WRITE_VALUE" ]; then
          Log "commit: $WRITE_VALUE -> $WRITE_PATH"
-         printf "%s" "$WRITE_VALUE" > "$WRITE_PATH"
+-        printf "%s" "$WRITE_VALUE" > "$WRITE_PATH"
++        echo "$WRITE_VALUE" > "$WRITE_PATH"
      fi
  
 -    chgrp deck "$WRITE_PATH"
@@ -28,41 +40,41 @@ index 8fcd1d4..4b47d21 100755
      exit 0
  }
  
-@@ -65,15 +68,35 @@
+@@ -65,15 +62,35 @@
  fi
  
  if MatchFilenamePattern "$WRITE_PATH" "/sys/class/drm/card*/device/power_dpm_force_performance_level"; then
 -    CommitWrite
-+    if systemctl list-units | grep hhd@; then
-+        echo "commit: Skipped $WRITE_VALUE -> $WRITE_PATH - controlled by HHD" | systemd-cat -t p-steamos-priv-write -p warning
-+    elif /usr/libexec/hwsupport/valve-hardware; then
++    if /usr/libexec/hwsupport/valve-hardware; then
 +        for i in $(ls /sys/class/drm/card*/device/power_dpm_force_performance_level)
 +        do
 +            WRITE_PATH="$i"
 +            CommitWrite
 +        done
++    else
++        Log "commit: Skipped $WRITE_VALUE -> $WRITE_PATH - Valve Hardware not detected"
 +    fi
  fi
  
  if MatchFilenamePattern "$WRITE_PATH" "/sys/class/drm/card*/device/pp_od_clk_voltage"; then
 -    CommitWrite
-+    if systemctl list-units | grep hhd@; then
-+        echo "commit: Skipped $WRITE_VALUE -> $WRITE_PATH - controlled by HHD" | systemd-cat -t p-steamos-priv-write -p warning
-+    elif /usr/libexec/hwsupport/valve-hardware; then
++    if /usr/libexec/hwsupport/valve-hardware; then
 +        for i in $(ls /sys/class/drm/card*/device/pp_od_clk_voltage)
 +        do
 +            WRITE_PATH="$i"
 +            CommitWrite
 +        done
++    else
++        Log "commit: Skipped $WRITE_VALUE -> $WRITE_PATH - Valve Hardware not detected"
 +    fi
  fi
  
  if MatchFilenamePattern "$WRITE_PATH" "/sys/class/hwmon/hwmon*/power*_cap"; then
 -    CommitWrite
-+    if systemctl list-units | grep hhd@; then
-+        echo "commit: Skipped $WRITE_VALUE -> $WRITE_PATH - controlled by HHD" | systemd-cat -t p-steamos-priv-write -p warning
-+    elif /usr/libexec/hwsupport/valve-hardware; then
++    if /usr/libexec/hwsupport/valve-hardware; then
 +        CommitWrite
++    else
++        Log "commit: Skipped $WRITE_VALUE -> $WRITE_PATH - Valve Hardware not detected"
 +    fi
  fi
  
