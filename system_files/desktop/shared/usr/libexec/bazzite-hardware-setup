@@ -7,7 +7,7 @@ IMAGE_FLAVOR=$(jq -r '."image-flavor"' < $IMAGE_INFO)
 FEDORA_VERSION=$(jq -r '."fedora-version"' < $IMAGE_INFO)
 
 # SCRIPT VERSION
-HWS_VER=44
+HWS_VER=45
 HWS_VER_FILE="/etc/bazzite/hws_version"
 HWS_VER_RAN=$(cat $HWS_VER_FILE)
 
@@ -224,6 +224,9 @@ fi
 # ALLY POWER SAVE FIX
 if [[ ":ROG Ally RC71L:" =~ ":$SYS_ID:"  ]]; then
   echo 0 | sudo tee /sys/devices/platform/asus-nb-wmi/mcu_powersave
+elif [[ ":ROG Ally X RC72LA:" =~ ":$SYS_ID:" ]]; then
+  modprobe -r amd_pmf
+  echo "blacklist amd_pmf" | sudo tee /etc/modprobe.d/hhd-blacklist.conf
 fi
 
 # WAYDROID FIX
