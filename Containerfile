@@ -265,6 +265,13 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
             fwupd-plugin-flashrom \
             fwupd-plugin-modem-manager \
             fwupd-plugin-uefi-capsule-data && \
+    rpm-ostree override replace \
+    --experimental \
+    --from repo=copr:copr.fedorainfracloud.org:kylegospo:bazzite-multilib \
+        libwayland-client \
+        libwayland-server \
+        libwayland-cursor \
+        libwayland-egl && \
     /usr/libexec/containerbuild/cleanup.sh && \
     ostree container commit
 
@@ -376,7 +383,7 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
         topgrade \
         ydotool \
         yafti \
-	stress-ng \
+        stress-ng \
         lsb_release && \
     rpm-ostree install \
         ublue-update && \
