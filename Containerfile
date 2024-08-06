@@ -143,6 +143,13 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     --from repo=updates \
         libdrm \
         || true && \
+    rpm-ostree override replace \
+    --experimental \
+    --from repo=updates \
+        libX11 \
+        libX11-common \
+        libX11-xcb \
+        || true && \
     rpm-ostree override remove \
         glibc32 \
         || true && \
@@ -489,7 +496,8 @@ RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
 RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     if grep -q "kinoite" <<< "${BASE_IMAGE_NAME}"; then \
         rpm-ostree install \
-            qt && \
+            qt \
+            krdp && \
         rpm-ostree override remove \
             plasma-welcome && \
         rpm-ostree override replace \
