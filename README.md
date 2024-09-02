@@ -57,7 +57,7 @@ Bazzite is built from [ublue-os/main](https://github.com/ublue-os/main) and [ubl
 - [ROM Properties Page shell extension](https://github.com/GerbilSoft/rom-properties) included.
 - Full support for [Winesync/Fastsync/NTsync](https://github.com/Frogging-Family/wine-tkg-git/issues/936).
 - [Distrobox](https://github.com/89luca89/distrobox) preinstalled with automatic updates for created containers.
-- [Ptyxis Terminal](https://gitlab.gnome.org/chergert/ptyxis) used as the default in all images. This terminal is specifically designed for the container workflow you'll use in Bazzite. If you wish to return to stock, run `ujust _restore-original-terminal`
+- [Ptyxis Terminal](https://gitlab.gnome.org/chergert/ptyxis) used as the default in all images. This terminal is specifically designed for the container workflow you'll use in Bazzite. KDE Konsole and GNOME Console can be installed as flatpaks if required.
 - Automated `duperemove` service for reducing the disk space used by wine prefix contents.
 - Support for HDMI CEC via [libCEC](https://libcec.pulse-eight.com/).
 - Uses [Google's BBR TCP congestion control](https://github.com/google/bbr) by default.
@@ -250,7 +250,6 @@ Ported SteamOS and ChimeraOS packages, among others used by Bazzite, are built o
 | Package                                                                                             | Status                                                                                                                                                      |
 | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ds-inhibit                                                                                          | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/ds-inhibit/status_image/last_build.png?)                                  |
-| duperemove                                                                                          | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/duperemove/status_image/last_build.png?)                                  |
 | [extest](https://github.com/Supreeeme/extest)                                                       | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite-multilib/package/extest/status_image/last_build.png?)                             |
 | gamescope                                                                                           | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite-multilib/package/gamescope/status_image/last_build.png?)                          |
 | [gamescope-session-plus](https://github.com/ChimeraOS/gamescope-session)                            | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/gamescope-session-plus/status_image/last_build.png?)                      |
@@ -287,7 +286,6 @@ Ported SteamOS and ChimeraOS packages, among others used by Bazzite, are built o
 | [umu-launcher](https://github.com/Open-Wine-Components/umu-launcher)                                | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/umu-launcher/status_image/last_build.png?)                                |
 | upower                                                                                              | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/upower/status_image/last_build.png?)                                      |
 | vpower                                                                                              | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/vpower/status_image/last_build.png?)                                      |
-| wireplumber                                                                                         | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/wireplumber/status_image/last_build.png?)                                 |
 | [xwiimote-ng](https://github.com/dev-0x7C6/xwiimote-ng)                                             | ![Build Status](https://copr.fedorainfracloud.org/coprs/kylegospo/bazzite/package/xwiimote-ng/status_image/last_build.png?)                                 |
 
 Additionally, the following packages are used from other Copr repos:
