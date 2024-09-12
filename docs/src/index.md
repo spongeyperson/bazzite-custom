@@ -27,7 +27,7 @@ A quick list of stuff you might be interested in checking out:
 
   1. [Flatpak][flatpak] for graphical apps
      {style="list-style-type: decimal;"}
-  2. [ujust][ujust] to use bazzite tailored installers
+  2. [ujust][ujust] to use Bazzite tailored installers
      {style="list-style-type: decimal;"}
   3. [Homebrew][homebrew] for CLI apps
      {style="list-style-type: decimal;"}
@@ -36,7 +36,7 @@ A quick list of stuff you might be interested in checking out:
   5. [Appimage][appimage]
      {style="list-style-type: decimal;"}
 
-  You can as well install regular Fedora packages with [`rpm-ostree`][rpm-ostree] but we [advise avoiding it if possible][rpm-ostree_caveats].
+  Install regular Fedora packages with [`rpm-ostree`][rpm-ostree] but we [advise avoiding it if possible][rpm-ostree_caveats].
 
 - [:fontawesome-brands-windows: **Run Windows Games**][run_win_game]{ style="font-size: 1.1rem" }
 
@@ -91,14 +91,14 @@ A quick list of stuff you might be interested in checking out:
 [rpm-ostree]: Installing_and_Managing_Software/rpm-ostree.md
 [distrobox]: Installing_and_Managing_Software/Distrobox.md
 [installing_software]: Installing_and_Managing_Software/index.md
-[contrib]: General/Contributing_to_Bazzite.md
+[contrib]: Advanced/Contributing_to_bazzite.md
 [homebrew]: Installing_and_Managing_Software/Homebrew.md
 [rpm-ostree_caveats]: Installing_and_Managing_Software/rpm-ostree.md#major-caveats-using-rpm-ostree
 [steam_game_mode]: Handheld_and_HTPC_edition/Steam_Gaming_Mode.md#what-is-steam-gaming-mode
 [appimage]: Installing_and_Managing_Software/AppImage.md
-[updateindex]: Installing_and_Managing_Software/Updates_Rollbacks_&_Rebasing/index.md
-[updates]: Installing_and_Managing_Software/Updates_Rollbacks_&_Rebasing/updating_guide.md
-[rollbacks]: Installing_and_Managing_Software/Updates_Rollbacks_&_Rebasing/rolling_back_system_updates.md
-[rebasing]: Installing_and_Managing_Software/Updates_Rollbacks_&_Rebasing/rebase_guide.md
-[rollback-helper]: Installing_and_Managing_Software/Updates_Rollbacks_&_Rebasing/bazzite_rollback_helper.md
+[updateindex]: Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/index.md/
+[updates]: Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/updating_guide.md/
+[rollbacks]: Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/rolling_back_system_updates.md/
+[rebasing]: Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/rebase_guide.md/
+[rollback-helper]: Installing_and_Managing_Software/Updates_Rollbacks_and_Rebasing/bazzite_rollback_helper.md/
 [waydroid]: Installing_and_Managing_Software/Waydroid_Setup_Guide.md
